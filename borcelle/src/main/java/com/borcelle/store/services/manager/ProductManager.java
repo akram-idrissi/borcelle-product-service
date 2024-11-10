@@ -1,6 +1,8 @@
 package com.borcelle.store.services.manager;
 
 import java.util.List;
+import java.util.Optional;
+
 import com.borcelle.store.dao.entities.Product;
 import org.springframework.stereotype.Component;
 
@@ -8,7 +10,7 @@ import org.springframework.stereotype.Component;
 public interface ProductManager {
 
     List<Product> getAllProducts();
-    Product getProductById(String id);
-    Product getProductByCategory(String category);
+    Optional<Product> getProductById(String id);
+    Optional<Product> getProductByCategory(String category);
 
 }
