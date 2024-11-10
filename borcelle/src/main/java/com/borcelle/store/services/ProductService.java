@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService implements ProductManager {
@@ -16,16 +17,16 @@ public class ProductService implements ProductManager {
 
     @Override
     public List<Product> getAllProducts() {
-        return null;
+        return productRepository.findAll();
     }
 
     @Override
-    public Product getProductById(String id) {
-        return null;
+    public Optional<Product> getProductById(String id) {
+        return productRepository.findById(id);
     }
 
     @Override
-    public Product getProductByCategory(String category) {
-        return null;
+    public Optional<Product> getProductByCategory(String category) {
+        return productRepository.findProductByCategory(category);
     }
 }
