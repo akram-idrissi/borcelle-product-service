@@ -10,7 +10,8 @@ import org.springframework.stereotype.Component;
 public interface ProductManager {
 
     List<Product> getAllProducts();
-    Optional<Product> getProductById(String id);
-    Optional<Product> getProductByCategory(String category);
+    Optional<Product> getProductByPid(String id);
+    List<Product> getProductsByCategory(String category);
+    Optional<Product> getProductBy_id(String id);
 
 }

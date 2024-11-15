@@ -21,12 +21,17 @@ public class ProductService implements ProductManager {
     }
 
     @Override
-    public Optional<Product> getProductById(String id) {
-        return productRepository.findById(id);
+    public Optional<Product> getProductByPid(String pid) {
+        return productRepository.findProductByPid(pid);
     }
 
     @Override
-    public Optional<Product> getProductByCategory(String category) {
-        return productRepository.findProductByCategory(category);
+    public Optional<Product> getProductBy_id(String pid) {
+        return productRepository.findProductBy_id(pid);
+    }
+
+    @Override
+    public List<Product> getProductsByCategory(String category) {
+        return productRepository.findAllByCategory(category);
     }
 }
