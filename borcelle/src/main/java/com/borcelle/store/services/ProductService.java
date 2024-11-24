@@ -4,9 +4,11 @@ import com.borcelle.store.dao.entities.Product;
 import com.borcelle.store.dao.repositories.ProductRepository;
 import com.borcelle.store.services.manager.ProductManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,8 +18,9 @@ public class ProductService implements ProductManager {
     private ProductRepository productRepository;
 
     @Override
-    public List<Product> getAllProducts() {
-        return productRepository.findAll();
+    public Page<Product> getAllProducts(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return productRepository.findAll(pageable);
     }
 
     @Override
@@ -31,7 +34,7 @@ public class ProductService implements ProductManager {
     }
 
     @Override
-    public List<Product> getProductsByCategory(String category) {
-        return productRepository.findAllByCategory(category);
+    public Page<Product> getProductsByCategory(String category, Pageable pageable) {
+        return productRepository.findAllByCategory(category, pageable);
     }
 }
